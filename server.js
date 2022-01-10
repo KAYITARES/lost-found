@@ -2,14 +2,17 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import mongoose from 'mongoose';
+import lostFound from "./src/routes/lostFoundRoutes";
 
 dotenv.config('./.env');
 
 const app=express();
+app.use(bodyParser.json());
+app.use("/lost",lostFound)
 
 app.use("/",(req,res)=>
 res.status(200).json({
-    message:"This is a wrong LostFound APi",
+    message:"This is a wrong APi",
 })
 );
 const dbUrl=process.env.DATABASEURL;

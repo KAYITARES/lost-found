@@ -2,7 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import mongoose from 'mongoose';
+
+import  DocRoutes from "./src/routes/documentRoutes";
+
 import lostFound from "./src/routes/lostFoundRoutes";
+
 
 import documentTypeRouter from './src/routes/documentTypeRoute';
 
@@ -13,7 +17,12 @@ dotenv.config('./.env');
 
 const app=express();
 app.use(bodyParser.json());
+
+
+app.use("/doc", DocRoutes)
+
 app.use("/lost",lostFound)
+
 app.use("/documentType",documentTypeRouter)
 
 app.use(bodyParser.json());

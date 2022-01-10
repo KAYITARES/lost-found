@@ -4,11 +4,23 @@ import dotenv from "dotenv";
 import mongoose from 'mongoose';
 import lostFound from "./src/routes/lostFoundRoutes";
 
+import documentTypeRouter from './src/routes/documentTypeRoute';
+
+import userRouter from "./src/routes/userRoutes"
+
+
 dotenv.config('./.env');
 
 const app=express();
 app.use(bodyParser.json());
 app.use("/lost",lostFound)
+app.use("/documentType",documentTypeRouter)
+
+app.use(bodyParser.json());
+
+
+app.use("/user",userRouter);
+
 
 app.use("/",(req,res)=>
 res.status(200).json({

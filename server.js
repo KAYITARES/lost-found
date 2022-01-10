@@ -2,11 +2,17 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import mongoose from 'mongoose';
+
+import documentTypeRouter from './src/routes/documentTypeRoute';
+
 import userRouter from "./src/routes/userRoutes"
+
 
 dotenv.config('./.env');
 
 const app=express();
+app.use(bodyParser.json());
+app.use("/documentType",documentTypeRouter)
 
 app.use(bodyParser.json());
 

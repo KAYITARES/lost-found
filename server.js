@@ -4,11 +4,25 @@ import dotenv from "dotenv";
 import mongoose from 'mongoose';
 import  DocRoutes from "./src/routes/documentRoutes";
 
+import documentTypeRouter from './src/routes/documentTypeRoute';
+
+import userRouter from "./src/routes/userRoutes"
+
+
 dotenv.config('./.env');
 
 const app=express();
 app.use(bodyParser.json());
+
 app.use("/doc", DocRoutes)
+
+app.use("/documentType",documentTypeRouter)
+
+app.use(bodyParser.json());
+
+
+app.use("/user",userRouter);
+
 
 app.use("/",(req,res)=>
 res.status(200).json({

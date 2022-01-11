@@ -7,6 +7,7 @@ const userSchema= new mongoose.Schema({
    phone: {
     type:String,
     required:true,
+    unique:true,
     },
     address:{
         type:String,
@@ -15,14 +16,18 @@ const userSchema= new mongoose.Schema({
     },
     role:{
         type:String,
-        enum:["admin","userLost","userFound"]
+        enum:["admin","userLost","userFound"],
+        default:"userLost",
     
     },
     email:{
-        type:String
+        type:String,
+        unique:true
     },
     password:{
-        type:String
+        type:String,
+        required:true,
+
     }
 
 

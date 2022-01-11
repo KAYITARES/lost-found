@@ -1,11 +1,17 @@
 import mongoose from "mongoose";
-import user from "../models/user";
+// import user from "../models/user";
 import userInfos from "../models/user";
+import bcrypt from "bcrypt";
+import TokenAuth from "../helpers/tokenAuth";
 
 class UserController{
 
     //CREATING ACCOUNT FOR USERFOUNDERS
 static async createUserFound(req,res){
+
+    const hashPassword = bcrypt.hashSync(req.body.password, 10);
+
+    req.body.password = hashPassword;
 
     const user = await userInfos.create(req.body);
     if (!user) {
@@ -74,6 +80,31 @@ static async deleteOneUserFounder(req,res){
     }
     return res.status(200).json({ message: "userFounder removed successfully", data: user });
 }
+
+
+//LOGIN USING PHONENUMBEER FOR USERFOUNDERS
+
+static async userFoundMobilePhoneNumberLogin(req, res) {
+
+    const users = await userInfos.findOne({ phone: req.body.phone });
+
+    if (!users) {
+        return res.status(404).json({ error: "user not found! kindly register first" })
+    }
+
+
+    if (bcrypt.compareSync(req.body.password, users.password)) {
+        users.password = null;
+        const token = TokenAuth.tokenGenerator({ users: users });
+
+        return res.status(200).json({ message: "successfully logged in", token: token });
+
+    }
+    return res.status(400).json({ error: "password is wrong", users:users });
+}
+
+
+
 }
 
 export default UserController;

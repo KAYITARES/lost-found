@@ -13,6 +13,7 @@ class lostFoundController{
         .json({message:" registered successfully",data: lostFound });
     
     }
+    
     // get all lostFound
 
     static async getAlllostFound(req, res) {

@@ -1,11 +1,14 @@
 import docInfos from "../models/document";
+import userInfos from "../models/user";
 
 class DocController{
 
     //create document
 
     static async createDoc(req,res){
-        
+
+        req.body.UserID=req.user._id;
+       
         const doc= await  docInfos.create(req.body);
 
         if(!doc){
@@ -13,6 +16,7 @@ class DocController{
         }
         return res.status(200).json({message:"Documents created successfully", data: doc});
     }
+    
 
     // get all documents
 

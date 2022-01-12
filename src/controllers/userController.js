@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import userInfos from "../models/user";
 import bcrypt from "bcrypt";
 import TokenAuth from "../helpers/tokenAuth";
+import docController from "../controllers/docController";
 
 class UserController{
 
@@ -97,7 +98,7 @@ static async userFoundMobilePhoneNumberLogin(req, res) {
         users.password = null;
         const token = TokenAuth.tokenGenerator({ users: users });
 
-        return res.status(200).json({ message: "successfully logged in", token: token });
+        return res.status(200).json({ message: "successfully logged in", token: token, data:users });
 
     }
     return res.status(400).json({ error: "password is wrong", users:users });

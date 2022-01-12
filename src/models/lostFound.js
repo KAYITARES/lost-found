@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 
 const lostFoundSchema = new mongoose.Schema({
 
-    documentId:{ 
-         type:Number,
+    document:{ 
+         type:mongoose.Schema.ObjectId,
         ref:"Document",
         
     },
@@ -14,8 +14,8 @@ const lostFoundSchema = new mongoose.Schema({
             required:"true",
         },
            
-    userId:{
-        type:Number,
+    user:{
+        type:mongoose.Schema.ObjectId,
         ref:"User"  
         
     },

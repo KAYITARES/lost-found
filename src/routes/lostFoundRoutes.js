@@ -1,6 +1,7 @@
 import express from "express";
 import lostFoundController from "../controllers/lostFoundController";
-
+// import validator from "../middlewares/validator";
+import UserController  from "../controllers/userController";
 
 const lostRouter =express.Router();
 lostRouter.post("/register",lostFoundController.register);

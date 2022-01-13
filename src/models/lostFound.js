@@ -17,7 +17,7 @@ const lostFoundSchema = new mongoose.Schema({
     userId:{
         type:Number,
         ref:"User"  
-        
+            
     },
     
 

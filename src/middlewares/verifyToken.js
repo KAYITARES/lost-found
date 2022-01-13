@@ -23,7 +23,7 @@ const isUserFoundExist = async(req,res,next)=>{
 
 //CONSOLE.LOG.DATA
 
-req.user=data.users;
+req.user=data.user;
 const user = await UserInfos.find(req.user);
 if(!user)
 { return res.status(400).json({error:"user not found, you're nto authorised"});

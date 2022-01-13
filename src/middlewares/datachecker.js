@@ -7,7 +7,7 @@ class Datachecker{
 
 static async isMobilePhoneNumberExist (req,res,next){
 
-    const user = await UserInfos.findOne({Phone:req.body.phone});
+    const user = await UserInfos.findOne({phone:req.body.phone});
 
   
 

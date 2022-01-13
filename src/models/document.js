@@ -5,9 +5,9 @@ const documentSchema= new mongoose.Schema(
 
         DocumaTypeId:
         {
-            type:Number,
-            required:true,
-            unique:true,
+            type:mongoose.Schema.ObjectId,
+            ref:"DocumentType"
+           
         },
 
 IDofthedocument:
@@ -24,8 +24,8 @@ status:{
 
 Picturesofdocs: String,
 UserID:{
-     type:Number,
-     unique:true,
+     type:mongoose.Schema.ObjectId,
+   ref:"User",
 }
 
 }

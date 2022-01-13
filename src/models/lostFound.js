@@ -1,33 +1,21 @@
 import mongoose from "mongoose";
 
-
-const lostFoundSchema = new mongoose.Schema({
-
-    documentId:{ 
-         type:Number,
-        ref:"Document",
-        
+const lostFoundSchema = new mongoose.Schema(
+  {
+    documentId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Document",
     },
-        adress:String,
-        phone:{
-            type:String,
-            required:"true",
-        },
-           
-    userId:{
-        type:Number,
-        ref:"User"  
-        
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
     },
-    
+  },
+  {
+    timestamps: true,
+  }
+);
 
+const lostFound = mongoose.model("lostFound", lostFoundSchema);
 
-    
-      }
-    
-  );
-  
-  const lostFound = mongoose.model("lostFound",lostFoundSchema);
-  
-  
-  export default lostFound;
+export default lostFound;

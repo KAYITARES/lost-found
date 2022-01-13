@@ -19,7 +19,7 @@ IDofthedocument:
 
 status:{
     type: String,
-    enum:["Lost","Found"],
+    enum:["Lost","Found","Approved"],
 },
 
 Picturesofdocs: String,

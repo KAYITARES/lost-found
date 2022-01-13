@@ -21,20 +21,12 @@ userRouter.get("/allFounders",
 verifyToken,
 verifyAccess("admin"),
 UserController.getAllUserFounders);
-userRouter.get("/:id",
-verifyToken,
-verifyAccess("admin"),
-UserController.getOneUserFounder);
+userRouter.get("/:id",UserController.getOneUserFounder);
 userRouter.delete("/:id",
-verifyToken,
-verifyAccess("admin"),
 UserController.deleteOneUserFounder,
 
 );
-userRouter.patch("/:id",
-verifyToken,
-verifyAccess("userFound","userLost","admin"),
-UserController.changeUserFoundStatus);
+userRouter.patch("/:id",UserController.changeUserFoundStatus);
 userRouter.post("/login",
 
 UserController.userFoundMobilePhoneNumberLogin);

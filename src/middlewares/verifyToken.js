@@ -21,8 +21,6 @@ const isUserFoundExist = async(req,res,next)=>{
             return res.status(400).json({error:"Token Expired"})
         }
 
-//CONSOLE.LOG.DATA
-// console.log(data)
 req.user=data.users;
 const user = await UserInfos.find(req.user);
 if(!user)

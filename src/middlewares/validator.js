@@ -27,6 +27,14 @@ return[
 ]
 
 
+    };
+    static newDocumentTypeFounderRules(){
+        return[
+
+        
+        check("name","name should be valid").toLowerCase().trim().isAlpha()
+    
+        ]
     }
 
 

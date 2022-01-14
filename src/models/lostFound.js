@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const lostFoundSchema = new mongoose.Schema({
 
     document:{ 
@@ -18,16 +17,22 @@ const lostFoundSchema = new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:"User"  
         
+const lostFoundSchema = new mongoose.Schema(
+  {
+    documentId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Document",
     },
-    
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
+const lostFound = mongoose.model("lostFound", lostFoundSchema);
 
-    
-      }
-    
-  );
-  
-  const lostFound = mongoose.model("lostFound",lostFoundSchema);
-  
-  
-  export default lostFound;
+export default lostFound;

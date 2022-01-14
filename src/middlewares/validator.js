@@ -23,7 +23,7 @@ return[
     check("password", "password is not strong").trim().isStrongPassword(),
     check("lastName", "Last name should be valid").trim().isAlpha(),
     check("firstName", "first name should be valid").trim().isAlpha(),
-    check("phone","Phone should be valid").trim().isMobilePhone(),
+    check("phone","phone should be valid").trim().isMobilePhone(),
 ]
 
 

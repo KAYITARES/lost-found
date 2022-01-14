@@ -21,9 +21,7 @@ const isUserFoundExist = async(req,res,next)=>{
             return res.status(400).json({error:"Token Expired"})
         }
 
-//CONSOLE.LOG.DATA
-
-req.user=data.user;
+req.user=data.users;
 const user = await UserInfos.find(req.user);
 if(!user)
 { return res.status(400).json({error:"user not found, you're nto authorised"});

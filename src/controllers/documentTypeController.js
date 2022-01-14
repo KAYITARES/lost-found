@@ -1,8 +1,12 @@
 import documentTypeInfo from "../models/documentType"
+import userInfos from "../models/user"
 
 class documentTypeController{
     // create type of document in db
     static async createDocumentType(req,res){
+        req.body.user=req.user._id;
+     
+        req.body.name=req.body.name.toLowerCase();
         const documentType=await documentTypeInfo.create(req.body);
         if(!documentType){
             return res.status(404).json({error:"document type not registered"});

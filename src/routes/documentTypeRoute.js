@@ -1,10 +1,20 @@
 import express from 'express';
 import DocumentTypeController from "../controllers/documentTypeController";
+import Validator from '../middlewares/validator';
+import DataChecker from "../middlewares/datachecker";
+import verifyAccess from "../middlewares/verifyAccess";
+import verifyToken from "../middlewares/verifyToken"
 
 const documentTypeRouter=express.Router();
 
 documentTypeRouter.post(
-    "/register",DocumentTypeController.createDocumentType
+    "/register",
+    Validator.newDocumentTypeFounderRules(),
+    Validator.validateInput,
+    DataChecker.isDocumentTypeNameExist,
+    verifyToken,
+    verifyAccess("admin"),
+    DocumentTypeController.createDocumentType
 );
 //get all document type
 documentTypeRouter.get(

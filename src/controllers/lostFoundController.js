@@ -2,6 +2,9 @@ import lostFoundInfos from "../models/lostFound";
 
 class lostFoundController{
     static async register(req,res) {
+      // req.body.DocumentId=req.document.id;
+      // req.body.UserId=req.user._id;
+      // document=req.params.id;
  
         const lostFound= await lostFoundInfos.create(req.body);
 
@@ -13,6 +16,9 @@ class lostFoundController{
         .json({message:" registered successfully",data: lostFound });
     
     }
+
+    
+
     // get all lostFound
 
     static async getAlllostFound(req, res) {

@@ -1,10 +1,16 @@
 import express from 'express';
 import DocumentTypeController from "../controllers/documentTypeController";
+import Validator from '../middlewares/validator';
+import DataChecker from "../middlewares/datachecker";
 
 const documentTypeRouter=express.Router();
 
 documentTypeRouter.post(
-    "/register",DocumentTypeController.createDocumentType
+    "/register",
+    Validator.newDocumentTypeFounderRules(),
+    Validator.validateInput,
+    DataChecker.isDocumentTypeNameExist,
+    DocumentTypeController.createDocumentType
 );
 //get all document type
 documentTypeRouter.get(

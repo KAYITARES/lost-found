@@ -25,7 +25,11 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.5",
     "nodemon": "^2.0.15",
+
+    "twilio": "^3.73.0",
+
     "validator": "^13.7.0"
+
   },
   "author": "krac",
   "license": "ISC"

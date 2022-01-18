@@ -2,6 +2,7 @@ import UserInfos from "../models/user";
 import DocumentTypeInfos from "../models/documentType";
 import documentInfos from "../models/document";
 import lostFoundInfos from "../models/lostFound";
+import sendSms from "../helpers/sendSms";
 
 class Datachecker {
   //check if user PHONE exist
@@ -29,7 +30,7 @@ class Datachecker {
       IDofthedocument: req.body.IDofthedocument,
     });
 
-    console.log(userDocument)
+    // console.log(userDocument);
 
     if (!userDocument) {
       return next();
@@ -42,6 +43,13 @@ class Datachecker {
       });
 
       //send sms to user Lost userFound
+      console.log(userDocument.UserID.phone);
+      sendSms(
+        req.user.firstName,
+        req.user.phone,
+        userDocument.IDofthedocument,
+        userDocument.UserID.phone
+      );
 
       let docData = {
         documentId: userDocument._id,
@@ -53,19 +61,14 @@ class Datachecker {
       const data = await lostFoundInfos.findById(lostFoundData._id);
 
       return res.status(200).json({
-          message:"document lost is found succesfully",
-          data:data
-      })
+        message: "document lost is found succesfully",
+        data: data,
+      });
+    } else {
+      return res.status(404).json({
+        error: "failed to register document",
+      });
     }
-
-
-    else{
-        return res.status(404).json({
-            error:"failed to register document"
-        })
-    }
-
-
   }
 }
 static async isDocumentTypeNameExist(req,res,next){

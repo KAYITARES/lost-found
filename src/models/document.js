@@ -17,6 +17,7 @@ IDofthedocument:
     unique:true,
 },
 
+
 status:{
     type: String,
     enum:["Lost","Found","Approved"],
@@ -30,6 +31,13 @@ UserID:{
 
 }
 );
+documentSchema.pre(/^find/, function (next) {
+    this.populate({
+      path: "UserID",
+      select: "lastName role address phone",
+    });
+    next();
+  });
 
 const doc =mongoose.model('Document',documentSchema);
 export default doc;

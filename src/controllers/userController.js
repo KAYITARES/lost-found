@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import userInfos from "../models/user";
 import bcrypt from "bcrypt";
 import TokenAuth from "../helpers/tokenAuth";
+
+// import lostFoundInfos from "../models/lostFound";
 import docController from "../controllers/docController";
 
 class UserController{

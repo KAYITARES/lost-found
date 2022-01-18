@@ -17,8 +17,6 @@ const lostFoundSchema = new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:"User"  
         
-const lostFoundSchema = new mongoose.Schema(
-  {
     documentId: {
       type: mongoose.Schema.ObjectId,
       ref: "Document",
